@@ -1,0 +1,61 @@
+﻿@model Lends.Models.ViewModel.ClientFormViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Client.Id" />
+            <div class="form-group">
+                <label asp-for="Client.Name" class="control-label"></label>
+                <input asp-for="Client.Name" class="form-control" />
+                <span asp-validation-for="Client.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Email" class="control-label"></label>
+                <input asp-for="Client.Email" class="form-control" />
+                <span asp-validation-for="Client.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Cellphone" class="control-label"></label>
+                <input asp-for="Client.Cellphone" class="form-control" />
+                <span asp-validation-for="Client.Cellphone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Cpf" class="control-label"></label>
+                <input asp-for="Client.Cpf" class="form-control" />
+                <span asp-validation-for="Client.Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.RegistrationDate" class="control-label"></label>
+                <input asp-for="Client.RegistrationDate" class="form-control" />
+                <span asp-validation-for="Client.RegistrationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.AddressId" class="control-label"></label>
+                <select asp-for="Client.AddressId" class="form-control" 
+                asp-items="@(new SelectList(Model.Addresses, "Id", "ZipCode"))">
+                </select>
+                <span asp-validation-for="Client.Address.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
