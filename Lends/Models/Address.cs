@@ -7,9 +7,14 @@ namespace Lends.Models
     public class Address
     {
         public int Id { get; set; }
+
+        [Display(Name = "CEP")]
         public string ZipCode { get; set; }
+        
+        [Display(Name = "Número")]
         public int Number { get; set; }
-        [Display(Name = "Additional Information")]
+
+        [Display(Name = "Complemento")]
         public string AdditionalInformation { get; set; }
 
         public ICollection<Client> Clients = new List<Client>();

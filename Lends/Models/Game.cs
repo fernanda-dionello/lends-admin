@@ -10,23 +10,37 @@ namespace Lends.Models
     {
 
         public int Id { get; set; }
+        
+        [Display(Name = "Jogo")]
         public string Name { get; set; }
+        
+        [Display(Name = "Categoria")] 
         public CategoryType Category { get; set; }
 
-        [Display(Name = "Producer Code")]
+        
         public int ProducerId { get; set; }
 
+        [Display(Name = "Fabricante")]
         public Producer Producer { get; set; }
-        [Display(Name = "Min Players")]
+        
+        [Display(Name = "Min Jogadores")]
         public int MinPlayers { get; set; }
-        [Display(Name = "Max Players")]
+        [Display(Name = "Max Jogadores")]
         public int MaxPlayers { get; set; }
+        
+        [Display(Name = "Duração")]
         public string Duration { get; set; }
+        
+        [Display(Name = "Idade")]
         public string Age { get; set; }
-        [Display(Name = "Rent Price")]
+        
+        [Display(Name = "Aluguel")]
         public double RentPrice { get; set; }
+
+        [Display(Name = "Imagem")]
         public string Image { get; set; }
 
+        [Display(Name = "Status")]
         public GameStatus Status { get; set; }
 
         public ICollection<Rent> Rents = new List<Rent>();

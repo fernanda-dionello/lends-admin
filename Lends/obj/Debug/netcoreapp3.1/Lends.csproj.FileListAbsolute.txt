@@ -21,7 +21,6 @@ C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Lends.TagHelpers
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Lends.TagHelpers.output.cache
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Lends.RazorCoreGenerate.cache
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -158,7 +157,6 @@ C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Prod
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Producers\Index.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Create.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Delete.cshtml.g.cs
-C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Details.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Edit.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Index.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Games\Create.cshtml.g.cs

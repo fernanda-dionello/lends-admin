@@ -52,9 +52,6 @@ namespace Lends.Controllers
             //Criar uma instancia do nosso ViewModel
             var viewModel = new ClientFormViewModel();
 
-            //Acessar o banco de dados e retornar todos os registros de departamentos, adicionando eles nas lista de departamentos do ViewModel
-            viewModel.Addresses = _context.Address.ToList();
-
             //Encaminhar a ViewModel com as informações para compilar a view(html)
             return View(viewModel);
         }
@@ -64,16 +61,34 @@ namespace Lends.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Email,Cellphone,Cpf,RegistrationDate,AddressId")] Client client)
+        public async Task<IActionResult> Create(ClientFormViewModel clientForm)
         {
+            var address = await _context.Address
+                            .FirstOrDefaultAsync(m => m.ZipCode == clientForm.Address.ZipCode && m.Number == clientForm.Address.Number && m.AdditionalInformation == clientForm.Address.AdditionalInformation);
+            if (address == null)
+            {
+                address = new Address
+                {
+                    ZipCode = clientForm.Address.ZipCode,
+                    Number = clientForm.Address.Number,
+                    AdditionalInformation = clientForm.Address.AdditionalInformation
+                };
+
+                if (ModelState.IsValid)
+                {
+                    _context.Add(address);
+                    await _context.SaveChangesAsync();
+                }
+            }
             if (ModelState.IsValid)
             {
-                _context.Add(client);
+                clientForm.Client.AddressId = address.Id;
+                _context.Add(clientForm.Client);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AddressId"] = new SelectList(_context.Address, "Id", "Id", client.AddressId);
-            return View(client);
+            ViewData["AddressId"] = new SelectList(_context.Address, "Id", "Id", address.Id);
+            return View(clientForm);
         }
 
         // GET: Clients/Edit/5
@@ -105,23 +120,42 @@ namespace Lends.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Email,Cellphone,Cpf,RegistrationDate,AddressId")] Client client)
+        public async Task<IActionResult> Edit(ClientFormViewModel clientForm)
         {
-            if (id != client.Id)
-            {
-                return NotFound();
-            }
+            //if (id != clientForm.Client.Id)
+            //{
+            //    return NotFound();
+            //}
 
+            var address = await _context.Address
+                            .FirstOrDefaultAsync(m => m.ZipCode == clientForm.Client.Address.ZipCode && m.Number == clientForm.Client.Address.Number && m.AdditionalInformation == clientForm.Client.Address.AdditionalInformation);
+            if (address == null)
+            {
+                address = new Address
+                {
+                    ZipCode = clientForm.Client.Address.ZipCode,
+                    Number = clientForm.Client.Address.Number,
+                    AdditionalInformation = clientForm.Client.Address.AdditionalInformation
+                };
+
+                if (ModelState.IsValid)
+                {
+                    _context.Add(address);
+                    await _context.SaveChangesAsync();
+                }
+            }
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(client);
+                    clientForm.Client.AddressId = address.Id;
+                    clientForm.Client.Address = address;
+                    _context.Update(clientForm.Client);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClientExists(client.Id))
+                    if (!ClientExists(clientForm.Client.Id))
                     {
                         return NotFound();
                     }
@@ -132,8 +166,8 @@ namespace Lends.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AddressId"] = new SelectList(_context.Address, "Id", "Id", client.AddressId);
-            return View(client);
+            ViewData["AddressId"] = new SelectList(_context.Address, "Id", "Id", address.Id);
+            return View(clientForm);
         }
 
         // GET: Clients/Delete/5

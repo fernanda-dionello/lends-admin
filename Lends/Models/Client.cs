@@ -8,18 +8,25 @@ namespace Lends.Models
     public class Client
     {
         public int Id { get; set; }
+        
+        [Display(Name = "Nome")]
         public string Name { get; set; }
+
         public string Email { get; set; }
+        
+        [Display(Name = "Celular")]
         public string Cellphone { get; set; }
+        
         public string Cpf { get; set; }
 
-        [Display(Name = "Registration Date")]
+        [Display(Name = "Data de Registro")]
         [DataType(DataType.Date)]
         public DateTime RegistrationDate { get; set; }
 
-        [Display(Name = "Address")]
+        [Display(Name = "CEP")]
         public int AddressId { get; set; }
 
+        [Display(Name = "CEP")]
         public Address Address { get; set; }
 
         public ICollection<Rent> Rents = new List<Rent>();

@@ -5,6 +5,7 @@ namespace Lends.Models.ViewModel
     public class ClientFormViewModel
     {
         public Client Client { get; set; }
+        public Address Address { get; set; }
         public ICollection<Address> Addresses { get; set; }
     }
 }
