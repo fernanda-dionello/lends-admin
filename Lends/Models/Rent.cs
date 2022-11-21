@@ -8,14 +8,14 @@ namespace Lends.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Jogo")]
         public int GameId { get; set; }
 
-        [Display(Name = "Jogo")]
         public Game Game { get; set; }
 
-        
-        public int ClientId { get; set; }
+
         [Display(Name = "Cliente")]
+        public int ClientId { get; set; }
         public Client Client { get; set; }
 
         [Display(Name = "Data de Retirada")]
