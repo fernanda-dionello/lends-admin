@@ -28,7 +28,7 @@ namespace Lends.Migrations
                         column: x => x.AddressId,
                         principalTable: "Address",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

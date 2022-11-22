@@ -35,5 +35,11 @@
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
+        @{
+            if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+            {
+                <p>Não é possível deletar esse endereço pois ele está associado a um cliente.</p>
+            }
+        }
     </form>
 </div>

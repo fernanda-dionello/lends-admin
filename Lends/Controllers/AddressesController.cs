@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Lends.Data;
 using Lends.Models;
+using System.Net.Http;
+using System.Net;
+using System.Diagnostics;
 
 namespace Lends.Controllers
 {
@@ -130,7 +133,6 @@ namespace Lends.Controllers
             {
                 return NotFound();
             }
-
             return View(address);
         }
 
@@ -140,9 +142,18 @@ namespace Lends.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var address = await _context.Address.FindAsync(id);
-            _context.Address.Remove(address);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _context.Address.Remove(address);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                ModelState.AddModelError("Error", "Operação não permitida");
+                return View(address);
+            }
+            
         }
 
         private bool AddressExists(int id)

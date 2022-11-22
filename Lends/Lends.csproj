@@ -5,6 +5,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20221105170822_addAddress.cs" />
+    <Compile Remove="Migrations\20221105170822_addAddress.Designer.cs" />
+    <Compile Remove="Migrations\20221105174043_addProducer.cs" />
+    <Compile Remove="Migrations\20221105174043_addProducer.Designer.cs" />
+    <Compile Remove="Migrations\20221105175450_addClient.cs" />
+    <Compile Remove="Migrations\20221105175450_addClient.Designer.cs" />
+    <Compile Remove="Migrations\20221105183907_addGame.cs" />
+    <Compile Remove="Migrations\20221105183907_addGame.Designer.cs" />
+    <Compile Remove="Migrations\20221105191455_addRent.cs" />
+    <Compile Remove="Migrations\20221105191455_addRent.Designer.cs" />
+    <Compile Remove="Migrations\20221105195246_updateClient.cs" />
+    <Compile Remove="Migrations\20221105195246_updateClient.Designer.cs" />
+    <Compile Remove="Migrations\20221107224502_updateForeignKeys.cs" />
+    <Compile Remove="Migrations\20221107224502_updateForeignKeys.Designer.cs" />
+    <Compile Remove="Migrations\20221107231530_updateDeleteBehavior.cs" />
+    <Compile Remove="Migrations\20221107231530_updateDeleteBehavior.Designer.cs" />
+    <Compile Remove="Migrations\20221121015646_update-models.cs" />
+    <Compile Remove="Migrations\20221121015646_update-models.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.30" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.30">
       <PrivateAssets>all</PrivateAssets>
