@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lends.Data;
 using Lends.Models;
 using Lends.Models.ViewModel;
+using Lends.Models.Enums;
 
 namespace Lends.Controllers
 {
@@ -78,11 +79,29 @@ namespace Lends.Controllers
             {
                 _context.Add(rent);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
             ViewData["ClientId"] = new SelectList(_context.Client, "Id", "Id", rent.ClientId);
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "Id", rent.GameId);
-            return View(rent);
+
+            var game = await _context.Game
+                .Include(g => g.Producer)
+                .FirstOrDefaultAsync(m => m.Id == rent.GameId);
+            if (game == null || game.Status != GameStatus.AVAILABLE)
+            {
+                return NotFound();
+            }
+            try
+            {
+                game.Status = GameStatus.RENTED;
+                _context.Update(game);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Rents/ReturnBook/5
@@ -105,7 +124,7 @@ namespace Lends.Controllers
             return View(rent);
         }
 
-        // POST: Rents/Delete/5
+        // POST: Rents/ReturnBook/5
         [HttpPost, ActionName("ReturnBook")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ReturnBookConfirmed(int id)
@@ -127,6 +146,23 @@ namespace Lends.Controllers
                 {
                     throw;
                 }
+            }
+            var game = await _context.Game
+                .Include(g => g.Producer)
+                .FirstOrDefaultAsync(m => m.Id == rent.GameId);
+            if (game == null || game.Status != GameStatus.RENTED)
+            {
+                return NotFound();
+            }
+            try
+            {
+                game.Status = GameStatus.AVAILABLE;
+                _context.Update(game);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
             }
             return RedirectToAction(nameof(Index));
         }
