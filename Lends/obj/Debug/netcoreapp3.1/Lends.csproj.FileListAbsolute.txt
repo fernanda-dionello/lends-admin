@@ -170,3 +170,4 @@ C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Rent
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Rents\Edit.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Rents\Index.cshtml.g.cs
 C:\Users\bande\source\repos\Lends\Lends\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\bande\source\repos\Lends\Lends\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Select2Bootstrap.cshtml.g.cs
