@@ -15,13 +15,17 @@
             <div class="form-group">
                 <label asp-for="Rent.GameId" class="control-label"></label>
                 <select asp-for="Rent.GameId" class="form-control"
-                 asp-items="@(new SelectList(Model.Games, "Id", "Name"))"></select>
+                    asp-items="@(new SelectList(Model.Games, "Id", "Name"))">
+                </select>
             </div>
             <div class="form-group">
+                <label asp-for="Rent.ClientId" class="control-label"></label>
                 <link href="~/lib/select2-bootstrap-css/select2-bootstrap.css" rel="stylesheet" />
                 <!-- select2-bootstrap4-theme -->
                 <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
-                    <select name="simpleSelect2" asp-for="Rent.ClientId" data-live-search="true" data-live-search-style="startsWith" class="form-control" id="simpleSelect2" asp-items="@(new SelectList(Model.Clients, "Id", "Name"))">
+                <select asp-for="Rent.ClientId" data-live-search="true" data-live-search-style="startsWith" 
+                    class="form-control" id="simpleSelect2" 
+                    asp-items="@(new SelectList(Model.Clients, "Id", "Name"))">
                 </select>
             </div>
             <div class="form-group">
