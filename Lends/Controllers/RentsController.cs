@@ -26,8 +26,11 @@ namespace Lends.Controllers
             ViewData["CurrentFilter"] = rentSearch;
             var rents = from s in _context.Rent.Include(r => r.Client).Include(r => r.Game)
                         select s;
-            rents = rents.Where(rent => rent.IsActive == true);
-            if ( !string.IsNullOrEmpty(rentSearch))
+            if (string.IsNullOrEmpty(rentSearch))
+            {
+                rents = rents.Where(rent => rent.IsActive == true);
+            }
+            else
             {
                 rents = rents.Where(rent => rent.IsActive == false);
             }
@@ -82,66 +85,50 @@ namespace Lends.Controllers
             return View(rent);
         }
 
-        // GET: Rents/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Rents/ReturnBook/5
+        public async Task<IActionResult> ReturnBook(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Rent rent = _context.Rent.Include(obj => obj.Client).FirstOrDefault(obj => obj.Id == id);
-            rent = _context.Rent.Include(obj => obj.Game).FirstOrDefault(obj => obj.Id == id);
-
+            var rent = await _context.Rent
+                .Include(r => r.Client)
+                .Include(r => r.Game)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (rent == null)
             {
                 return NotFound();
             }
 
-            var viewModel = new RentFormViewModel();
-
-            viewModel.Clients = _context.Client.ToList();
-            viewModel.Games = _context.Game.ToList();
-            viewModel.Rent = rent;
-
-            return View(viewModel);
+            return View(rent);
         }
 
-        // POST: Rents/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        // POST: Rents/Delete/5
+        [HttpPost, ActionName("ReturnBook")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,GameId,ClientId,RentalDate,ReturnDate,Price")] Rent rent)
+        public async Task<IActionResult> ReturnBookConfirmed(int id)
         {
-            if (id != rent.Id)
+            var rent = await _context.Rent.FindAsync(id);
+            try
             {
-                return NotFound();
+                rent.IsActive = false;
+                _context.Update(rent);
+                await _context.SaveChangesAsync();
             }
-
-            if (ModelState.IsValid)
+            catch (DbUpdateConcurrencyException)
             {
-                try
+                if (!RentExists(rent.Id))
                 {
-                    _context.Update(rent);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!RentExists(rent.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientId"] = new SelectList(_context.Client, "Id", "Id", rent.ClientId);
-            ViewData["GameId"] = new SelectList(_context.Game, "Id", "Id", rent.GameId);
-            return View(rent);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Rents/Delete/5
