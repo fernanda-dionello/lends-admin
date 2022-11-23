@@ -21,10 +21,18 @@ namespace Lends.Controllers
         }
 
         // GET: Rents
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string rentSearch)
         {
-            var lendsContext = _context.Rent.Include(r => r.Client).Include(r => r.Game);
-            return View(await lendsContext.ToListAsync());
+            ViewData["CurrentFilter"] = rentSearch;
+            var rents = from s in _context.Rent.Include(r => r.Client).Include(r => r.Game)
+                        select s;
+            rents = rents.Where(rent => rent.IsActive == true);
+            if ( !string.IsNullOrEmpty(rentSearch))
+            {
+                rents = rents.Where(rent => rent.IsActive == false);
+            }
+
+            return View(await rents.AsNoTracking().ToListAsync());
         }
 
         // GET: Rents/Details/5

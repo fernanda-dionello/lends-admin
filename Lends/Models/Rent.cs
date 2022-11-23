@@ -32,14 +32,18 @@ namespace Lends.Models
         [DataType(DataType.Currency)]
         [Range(0.01, 100000, ErrorMessage ="O valor deve estar entre 0.01 e 100000")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
+        [Display(Name = "Ativo")]
+        public bool IsActive { get; set; } = true;
         public Rent(int id, DateTime rentalDate, DateTime returnDate, decimal price)
         {
             Id = id;
             RentalDate = rentalDate;
             ReturnDate = returnDate;
             Price = price;
+            IsActive = true;
         }
 
         public Rent()

@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Novo Aluguel</a>
 </p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input name="rentSearch" type="submit" value="Listar inativos" class="btn btn-danger" /> 
+            <input asp-action="Index" type="submit" value="Listar ativos" class="btn btn-primary" /> 
+        </p>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
