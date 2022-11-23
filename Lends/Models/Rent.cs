@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lends.Models
 {
@@ -29,10 +30,11 @@ namespace Lends.Models
         [Display(Name = "Valor")]
 
         [DataType(DataType.Currency)]
+        [Range(0.01, 100000, ErrorMessage ="O valor deve estar entre 0.01 e 100000")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
-        public Rent(int id, DateTime rentalDate, DateTime returnDate, double price)
+        public Rent(int id, DateTime rentalDate, DateTime returnDate, decimal price)
         {
             Id = id;
             RentalDate = rentalDate;

@@ -4,14 +4,16 @@ using Lends.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Lends.Migrations
 {
     [DbContext(typeof(LendsContext))]
-    partial class LendsContextModelSnapshot : ModelSnapshot
+    [Migration("20221123125129_change-price-to-decimal")]
+    partial class changepricetodecimal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
