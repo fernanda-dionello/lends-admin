@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lends.Data;
 using Lends.Models;
 using Lends.Models.ViewModel;
+using Lends.Models.Enums;
 
 namespace Lends.Controllers
 {
@@ -21,10 +22,17 @@ namespace Lends.Controllers
         }
 
         // GET: Games
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(GameStatus? statusSearch)
         {
-            var lendsContext = _context.Game.Include(g => g.Producer);
-            return View(await lendsContext.ToListAsync());
+            ViewData["CurrentFilter"] = statusSearch;
+            var games = from s in _context.Game.Include(g => g.Producer)
+                        select s;
+            if (statusSearch != null)
+            {
+                games = games.Where(game => game.Status == statusSearch);
+            }
+
+            return View(await games.AsNoTracking().ToListAsync());
         }
 
         // GET: Games/Details/5

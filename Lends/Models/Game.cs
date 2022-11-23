@@ -35,6 +35,8 @@ namespace Lends.Models
         public string Age { get; set; }
         
         [Display(Name = "Aluguel")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double RentPrice { get; set; }
 
         [Display(Name = "Imagem")]

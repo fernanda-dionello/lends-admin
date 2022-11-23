@@ -27,6 +27,9 @@ namespace Lends.Models
         public DateTime ReturnDate { get; set; }
 
         [Display(Name = "Valor")]
+
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double Price { get; set; }
 
         public Rent(int id, DateTime rentalDate, DateTime returnDate, double price)
