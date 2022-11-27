@@ -60,6 +60,54 @@
         </dd>
     </dl>
 </div>
+<h4>Histórico de aluguéis</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Jogo
+            </th>
+            <th>
+                Data de Retirada
+            </th>
+            <th>
+                Data de Retorno
+            </th>
+            <th>
+                Valor
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Rents)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @{
+                        string isActive = @item.IsActive == true ? "Ativo" : "Inativo";
+                    }
+                    @isActive
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

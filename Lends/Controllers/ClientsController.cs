@@ -43,6 +43,7 @@ namespace Lends.Controllers
                 return NotFound();
             }
 
+            client.Rents = _context.Rent.Where(rent => rent.ClientId == id).Include(rent => rent.Game).OrderBy(rent => rent.IsActive ? 0 : 1).ToList();
             return View(client);
         }
 
