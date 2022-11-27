@@ -37,18 +37,6 @@
                 @Html.DisplayNameFor(model => model.Producer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MinPlayers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaxPlayers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.RentPrice)
             </th>
             <th>
@@ -73,22 +61,10 @@
                 @Html.DisplayFor(modelItem => item.Producer.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MinPlayers)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxPlayers)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
                 R$ @Html.DisplayFor(modelItem => item.RentPrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                <img src="@item.Image" width="50px" class="detailImage" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

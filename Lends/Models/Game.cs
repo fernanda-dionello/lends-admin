@@ -40,6 +40,7 @@ namespace Lends.Models
         public string RentPrice { get; set; }
 
         [Display(Name = "Imagem")]
+        [DataType(DataType.ImageUrl)]
         public string Image { get; set; }
 
         [Display(Name = "Status")]
