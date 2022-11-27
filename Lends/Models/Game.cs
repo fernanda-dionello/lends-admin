@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using System;
 using Lends.Models.Enums;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lends.Models
 {
@@ -34,10 +35,9 @@ namespace Lends.Models
         [Display(Name = "Idade")]
         public string Age { get; set; }
         
-        [Display(Name = "Aluguel")]
-        [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C2}")]
-        public double RentPrice { get; set; }
+        [Display(Name = "Aluguel Diário")]
+        [RegularExpression(@"^\d{0,8}(\,\d{1,2})?", ErrorMessage = "Somente valores decimais separados por vírgula serão aceitos.")]
+        public string RentPrice { get; set; }
 
         [Display(Name = "Imagem")]
         public string Image { get; set; }
@@ -47,7 +47,7 @@ namespace Lends.Models
 
         public ICollection<Rent> Rents = new List<Rent>();
 
-        public Game(int id, string name, CategoryType category, int minPlayers, int maxPlayers, string duration, string age, double rentPrice, string image, GameStatus status)
+        public Game(int id, string name, CategoryType category, int minPlayers, int maxPlayers, string duration, string age, string rentPrice, string image, GameStatus status)
         {
             Id = id;
             Name = name;

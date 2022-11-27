@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lends.Models
 {
@@ -28,16 +26,12 @@ namespace Lends.Models
         public DateTime ReturnDate { get; set; }
 
         [Display(Name = "Valor")]
-
-        [DataType(DataType.Currency)]
-        [Range(0.01, 100000, ErrorMessage ="O valor deve estar entre 0.01 e 100000")]
-        [DisplayFormat(DataFormatString = "{0:C2}")]
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Price { get; set; }
+        [RegularExpression(@"^\d{0,8}(\,\d{1,2})?", ErrorMessage = "Somente valores decimais separados por vírgula serão aceitos.")]
+        public string Price { get; set; }
 
         [Display(Name = "Ativo")]
         public bool IsActive { get; set; } = true;
-        public Rent(int id, DateTime rentalDate, DateTime returnDate, decimal price)
+        public Rent(int id, DateTime rentalDate, DateTime returnDate, string price)
         {
             Id = id;
             RentalDate = rentalDate;

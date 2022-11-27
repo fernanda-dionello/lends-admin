@@ -8,8 +8,6 @@ namespace Lends.Models.Enums
         [Display(Name = "Rented")]
         RENTED = 0,
         [Display(Name = "Available")]
-        AVAILABLE = 1,
-        [Display(Name = "Booked")]
-        BOOKED = 2
+        AVAILABLE = 1
     }
 }
