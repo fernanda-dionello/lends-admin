@@ -9,16 +9,16 @@
 <p>
     <a asp-action="Create">Adicionar novo fabricante</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Cnpj)
             </th>
-            <th></th>
+            <th scope ="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Cnpj)
             </td>
-            <td>
+                <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
