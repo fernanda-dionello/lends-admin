@@ -9,7 +9,7 @@
     <h1 class="h1-subcategories">Fabricantes</h1>
 
     <p>
-        <button type="button" asp-action="Create" class="btn btn-primary add-producer">Adicionar Fabricante</button>
+        <a asp-action="Create" class="btn btn-primary add-producer">Adicionar Fabricante</a>
     </p>
     <table class="table table-hover">
         <thead>
@@ -33,9 +33,9 @@
                     @Html.DisplayFor(modelItem => item.Cnpj)
                 </td>
                     <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary button-size">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-warning button-size">Detalhes</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger button-size">Deletar</a>
                 </td>
             </tr>
     }

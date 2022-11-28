@@ -123,7 +123,7 @@ body {
     box-shadow: 0 2px 10px rgb(0 0 0 / 15%);
 }
 
-.add-producer {
+.add-producer, .button-size {
     font-size: 12px;
 }
 
@@ -139,4 +139,60 @@ body {
     border-color: #ffce67;
     font-weight: 500;
     box-shadow: 0 2px 10px rgb(0 0 0 / 30%);
+}
+
+.btn-primary:active, .btn-primary:focus {
+    background-color: #bababa;
+    border-color: #bababa;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 30%);
+}
+
+.jumbotron-form, .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-create, .btn-edit {
+    width: 100%;
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus {
+    color: #636262;
+    box-shadow: none;
+}
+
+.dl {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.dt-item {
+    margin-bottom: 0.5rem;
+}
+
+.dl-list {
+    width: 100%;
+}
+
+.delete-text {
+    color: #888;
+    font-size: 16px;
+    font-weight: 700;
 }
