@@ -6,7 +6,6 @@ namespace Lends.Models
 {
     public class Producer
     {
-
         public int Id { get; set; }
 
         [Display(Name = "Fabricante")]

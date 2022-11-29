@@ -18,7 +18,6 @@ namespace Lends.Models
         [Display(Name = "Categoria")] 
         public CategoryType Category { get; set; }
 
-        
         public int ProducerId { get; set; }
 
         [Display(Name = "Fabricante")]

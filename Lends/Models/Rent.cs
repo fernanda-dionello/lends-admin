@@ -12,7 +12,6 @@ namespace Lends.Models
 
         public Game Game { get; set; }
 
-
         [Display(Name = "Cliente")]
         public int ClientId { get; set; }
         public Client Client { get; set; }
