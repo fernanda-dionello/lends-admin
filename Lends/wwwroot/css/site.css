@@ -195,6 +195,11 @@ body {
     text-align: center;
 }
 
+.buttons-clients {
+    display: flex;
+    flex-direction: row;
+}
+
 .dt-item {
     margin-bottom: 0.5rem;
 }
@@ -223,7 +228,7 @@ body {
     margin: unset !important;
 }
 
-.form-buttons-separator {
+.form-buttons-separator, .addresses {
     margin-left: 20px;
 }
 
@@ -242,4 +247,14 @@ body {
 
 .dt-item-key {
     text-align: left;
+}
+
+.addresses {
+    background: #bababa;
+    border-color: #bababa;
+}
+
+.addresses:hover {
+    background: #ffce67;
+    border-color: #ffce67;
 }
