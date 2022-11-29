@@ -4,73 +4,94 @@
     ViewData["Title"] = "Informações";
 }
 
-<h1>Details</h1>
+<div class="jumbotron jumbotron-form">
+    <h1 class="h1-subcategories">Detalhes sobre o jogo</h1>
 
-<div>
-    <h4>Game</h4>
-    <hr />
     <img src=@Model.Image width="150px" class="detailImage" />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Producer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Producer.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MinPlayers)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MinPlayers)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaxPlayers)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaxPlayers)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RentPrice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RentPrice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+    <dl class="dl-style">
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Producer)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Producer.Name)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.MinPlayers)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.MinPlayers)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.MaxPlayers)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.MaxPlayers)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.RentPrice)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.RentPrice)
+            </dd>
+        </div>
+
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+        </div>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary button-size">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-warning button-size">Retornar</a>
+    </div>
 </div>

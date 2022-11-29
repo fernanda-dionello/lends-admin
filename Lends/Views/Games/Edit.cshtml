@@ -5,78 +5,78 @@
     ViewData["Title"] = "Editar";
 }
 
-<h1>Editar</h1>
+<div class="jumbotron jumbotron-form">
+    <h1 class="h1-subcategories">Editar Jogo</h1>
 
-<h4>Jogo</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Game.Id" />
-            <div class="form-group">
-                <label asp-for="Game.Name" class="control-label"></label>
-                <input asp-for="Game.Name" class="form-control" />
-                <span asp-validation-for="Game.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.Category" class="control-label"></label>
-                <select asp-for="Game.Category" class="form-control"
-                asp-items="@Html.GetEnumSelectList<CategoryType>()"></select>
-                <span asp-validation-for="Game.Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.ProducerId" class="control-label"></label>
-                <select asp-for="Game.ProducerId" class="form-control"
-                        asp-items="@(new SelectList(Model.Producers, "Id", "Name"))">
-                </select>
-                <span asp-validation-for="Game.Producer.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.MinPlayers" class="control-label"></label>
-                <input asp-for="Game.MinPlayers" class="form-control" />
-                <span asp-validation-for="Game.MinPlayers" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.MaxPlayers" class="control-label"></label>
-                <input asp-for="Game.MaxPlayers" class="form-control" />
-                <span asp-validation-for="Game.MaxPlayers" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.Duration" class="control-label"></label>
-                <input asp-for="Game.Duration" class="form-control" />
-                <span asp-validation-for="Game.Duration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.Age" class="control-label"></label>
-                <input asp-for="Game.Age" class="form-control" />
-                <span asp-validation-for="Game.Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.RentPrice" class="control-label"></label>
-                <input asp-for="Game.RentPrice" class="form-control"/>
-                <span asp-validation-for="Game.RentPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.Image" class="control-label"></label>
-                <input asp-for="Game.Image" class="form-control" />
-                <span asp-validation-for="Game.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Game.Status" class="control-label"></label>
-                <select asp-for="Game.Status" class="form-control"
-                asp-items="@Html.GetEnumSelectList<GameStatus>()"></select>
-                <span asp-validation-for="Game.Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="row">
+        <div class="col-md-4 form-size">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Game.Id" />
+                <div class="form-group">
+                    <label asp-for="Game.Name" class="control-label"></label>
+                    <input asp-for="Game.Name" class="form-control" />
+                    <span asp-validation-for="Game.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.Category" class="control-label"></label>
+                    <select asp-for="Game.Category" class="form-control"
+                    asp-items="@Html.GetEnumSelectList<CategoryType>()"></select>
+                    <span asp-validation-for="Game.Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.ProducerId" class="control-label"></label>
+                    <select asp-for="Game.ProducerId" class="form-control"
+                            asp-items="@(new SelectList(Model.Producers, "Id", "Name"))">
+                    </select>
+                    <span asp-validation-for="Game.Producer.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.MinPlayers" class="control-label"></label>
+                    <input asp-for="Game.MinPlayers" class="form-control" />
+                    <span asp-validation-for="Game.MinPlayers" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.MaxPlayers" class="control-label"></label>
+                    <input asp-for="Game.MaxPlayers" class="form-control" />
+                    <span asp-validation-for="Game.MaxPlayers" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.Duration" class="control-label"></label>
+                    <input asp-for="Game.Duration" class="form-control" />
+                    <span asp-validation-for="Game.Duration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.Age" class="control-label"></label>
+                    <input asp-for="Game.Age" class="form-control" />
+                    <span asp-validation-for="Game.Age" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.RentPrice" class="control-label"></label>
+                    <input asp-for="Game.RentPrice" class="form-control"/>
+                    <span asp-validation-for="Game.RentPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.Image" class="control-label"></label>
+                    <input asp-for="Game.Image" class="form-control" />
+                    <span asp-validation-for="Game.Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Game.Status" class="control-label"></label>
+                    <select asp-for="Game.Status" class="form-control"
+                    asp-items="@Html.GetEnumSelectList<GameStatus>()"></select>
+                    <span asp-validation-for="Game.Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-primary btn-edit" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <a asp-action="Index" class="btn btn-link">Retornar</a>
+    </div>
 </div>
 
 @section Scripts {

@@ -123,8 +123,13 @@ body {
     box-shadow: 0 2px 10px rgb(0 0 0 / 15%);
 }
 
-.add-producer, .button-size {
+.add-producer, .button-size, .btn-danger {
     font-size: 12px;
+    font-weight: 500;
+}
+
+.dropdown-item {
+    font-size: 14px;
 }
 
 .btn-primary {
@@ -178,9 +183,16 @@ body {
     align-items: center;
 }
 
+.dl-style {
+    width: 100% !important;
+    margin-top: 1rem !important;
+}
+
 .details-list {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    text-align: center;
 }
 
 .dt-item {
@@ -195,4 +207,39 @@ body {
     color: #888;
     font-size: 16px;
     font-weight: 700;
+}
+
+.btn-group {
+    height: 32px;
+}
+
+.games-buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.games-buttons > p {
+    margin: unset !important;
+}
+
+.form-buttons-separator {
+    margin-left: 20px;
+}
+
+.clean-filter {
+    font-size: 13px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:active {
+    background-color: #ff7851;
+}
+
+.form-size{
+    max-width: 40%;
+}
+
+.dt-item-key {
+    text-align: left;
 }

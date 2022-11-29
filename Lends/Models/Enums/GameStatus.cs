@@ -5,9 +5,9 @@ namespace Lends.Models.Enums
 {
     public enum GameStatus : int
     {
-        [Display(Name = "Rented")]
+        [Display(Name = "Alugado")]
         RENTED = 0,
-        [Display(Name = "Available")]
+        [Display(Name = "Disponível")]
         AVAILABLE = 1
     }
 }

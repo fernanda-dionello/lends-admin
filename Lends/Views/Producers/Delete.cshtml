@@ -9,20 +9,20 @@
     <h1 class="h1-subcategories">Deletar Fabricante</h1>
 
     <h4 class="delete-text">Você tem certeza que quer deletar esse fabricante?</h4>
-    <dl>
+    <dl class="dl-style">
         <div class="details-list">
-            <dt class = "col-sm-6">
+            <dt class="dt-item col-sm-2 dt-item-key">
                 @Html.DisplayNameFor(model => model.Name)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="dt-item col-sm-2">
                 @Html.DisplayFor(model => model.Name)
             </dd>
         </div>
         <div class="details-list">
-            <dt class = "col-sm-6">
+            <dt class="dt-item col-sm-2 dt-item-key">
                 @Html.DisplayNameFor(model => model.Cnpj)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="dt-item col-sm-2">
                 @Html.DisplayFor(model => model.Cnpj)
             </dd>
         </div>
