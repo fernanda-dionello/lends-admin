@@ -32,7 +32,7 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Cliente não encontrado");
             }
 
             var client = await _context.Client
@@ -40,7 +40,7 @@ namespace Lends.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {
-                return NotFound();
+                return NotFound("Cliente não encontrado");
             }
 
             client.Rents = _context.Rent.Where(rent => rent.ClientId == id).Include(rent => rent.Game).OrderBy(rent => rent.IsActive ? 0 : 1).ToList();
@@ -98,14 +98,14 @@ namespace Lends.Controllers
 
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Cliente não encontrado");
             }
 
             Client client = _context.Client.Include(obj => obj.Address).FirstOrDefault(obj => obj.Id == id);
 
             if (client == null)
             {
-                return NotFound();
+                return NotFound("Cliente não encontrado");
             }
 
             var viewModel = new ClientFormViewModel();
@@ -123,10 +123,6 @@ namespace Lends.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ClientFormViewModel clientForm)
         {
-            //if (id != clientForm.Client.Id)
-            //{
-            //    return NotFound();
-            //}
 
             var address = await _context.Address
                             .FirstOrDefaultAsync(m => m.ZipCode == clientForm.Client.Address.ZipCode && m.Number == clientForm.Client.Address.Number && m.AdditionalInformation == clientForm.Client.Address.AdditionalInformation);
@@ -158,7 +154,7 @@ namespace Lends.Controllers
                 {
                     if (!ClientExists(clientForm.Client.Id))
                     {
-                        return NotFound();
+                        return NotFound("Cliente não encontrado");
                     }
                     else
                     {
@@ -176,7 +172,7 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Cliente não encontrado");
             }
 
             var client = await _context.Client
@@ -184,7 +180,7 @@ namespace Lends.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {
-                return NotFound();
+                return NotFound("Cliente não encontrado");
             }
 
             return View(client);
@@ -196,9 +192,18 @@ namespace Lends.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var client = await _context.Client.FindAsync(id);
-            _context.Client.Remove(client);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            try
+            {
+                _context.Client.Remove(client);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                ModelState.AddModelError("Error", "Operação não permitida");
+                return View(client);
+            }
         }
 
         private bool ClientExists(int id)

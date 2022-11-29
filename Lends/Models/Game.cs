@@ -35,7 +35,7 @@ namespace Lends.Models
         [Display(Name = "Idade")]
         public string Age { get; set; }
         
-        [Display(Name = "Aluguel Diário")]
+        [Display(Name = "Aluguel Semanal")]
         [RegularExpression(@"^\d{0,8}(\,\d{1,2})?", ErrorMessage = "Somente valores decimais separados por vírgula serão aceitos.")]
         public string RentPrice { get; set; }
 

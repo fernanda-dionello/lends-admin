@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lends.Migrations
 {
     [DbContext(typeof(LendsContext))]
-    [Migration("20221127145725_changing-rent-value-type-to-decimal")]
-    partial class changingrentvaluetypetodecimal
+    [Migration("20221129152940_change-name-of-rents")]
+    partial class changenameofrents
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -105,8 +105,8 @@ namespace Lends.Migrations
                     b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("RentPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("RentPrice")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -152,8 +152,8 @@ namespace Lends.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Price")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RentalDate")
                         .HasColumnType("datetime2");

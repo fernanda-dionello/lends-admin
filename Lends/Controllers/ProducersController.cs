@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Lends.Data;
 using Lends.Models;
+using System.Net;
 
 namespace Lends.Controllers
 {
@@ -30,14 +31,14 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Fabricante não encontrado");
             }
 
             var producer = await _context.Producer
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (producer == null)
             {
-                return NotFound();
+                return NotFound("Fabricante não encontrado");
             }
 
             return View(producer);
@@ -70,13 +71,13 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Fabricante não encontrado");
             }
 
             var producer = await _context.Producer.FindAsync(id);
             if (producer == null)
             {
-                return NotFound();
+                return NotFound("Fabricante não encontrado");
             }
             return View(producer);
         }
@@ -90,7 +91,7 @@ namespace Lends.Controllers
         {
             if (id != producer.Id)
             {
-                return NotFound();
+                return NotFound("Fabricante não encontrado");
             }
 
             if (ModelState.IsValid)
@@ -104,7 +105,7 @@ namespace Lends.Controllers
                 {
                     if (!ProducerExists(producer.Id))
                     {
-                        return NotFound();
+                        return NotFound("Fabricante não encontrado");
                     }
                     else
                     {
@@ -121,14 +122,14 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Fabricante não encontrado");
             }
 
             var producer = await _context.Producer
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (producer == null)
             {
-                return NotFound();
+                return NotFound("Fabricante não encontrado");
             }
 
             return View(producer);
@@ -140,9 +141,17 @@ namespace Lends.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var producer = await _context.Producer.FindAsync(id);
-            _context.Producer.Remove(producer);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _context.Producer.Remove(producer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                ModelState.AddModelError("Error", "Operação não permitida");
+                return View(producer);
+            }
         }
 
         private bool ProducerExists(int id)

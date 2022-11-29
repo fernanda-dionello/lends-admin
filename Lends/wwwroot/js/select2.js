@@ -1,5 +1,5 @@
 ﻿$("#simpleSelect2").select2({
-    placeholder: "Select a Static Value",
+    placeholder: "Selecione um cliente",
     theme: "bootstrap4",
     allowClear: true
 });

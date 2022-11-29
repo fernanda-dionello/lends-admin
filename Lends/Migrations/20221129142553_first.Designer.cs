@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lends.Migrations
 {
     [DbContext(typeof(LendsContext))]
-    [Migration("20221127155344_change-game-status")]
-    partial class changegamestatus
+    [Migration("20221129142553_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -175,7 +175,7 @@ namespace Lends.Migrations
                     b.HasOne("Lends.Models.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -184,7 +184,7 @@ namespace Lends.Migrations
                     b.HasOne("Lends.Models.Producer", "Producer")
                         .WithMany()
                         .HasForeignKey("ProducerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -193,13 +193,13 @@ namespace Lends.Migrations
                     b.HasOne("Lends.Models.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Lends.Models.Game", "Game")
                         .WithMany()
                         .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

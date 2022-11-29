@@ -74,10 +74,21 @@
             </dd>
         </div>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Deletar" class="btn btn-outline-danger button-size" />
-        <a asp-action="Index" class="btn btn-outline-warning button-size">Retornar</a>
+
+    <form asp-action="Delete" class="delete-buttons">
+        <div>
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Deletar" class="btn btn-outline-danger button-size" />
+            <a asp-action="Index" class="btn btn-outline-warning button-size">Retornar</a>
+        </div>
+        @{
+            if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+            {
+                <div class="alert alert-dismissible alert-warning alert-size">
+                    <button type="button" class="close close-button" data-dismiss="alert">&times;</button>
+                    <p class="mb-0">Não é possível deletar esse cliente pois ele está associado a um aluguel.</p>
+                </div>
+            }
+        }
     </form>
 </div>

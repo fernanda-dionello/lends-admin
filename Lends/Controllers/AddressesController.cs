@@ -33,14 +33,14 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Endereço não encontrado");
             }
 
             var address = await _context.Address
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (address == null)
             {
-                return NotFound();
+                return NotFound("Endereço não encontrado");
             }
 
             return View(address);
@@ -73,13 +73,13 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Endereço não encontrado");
             }
 
             var address = await _context.Address.FindAsync(id);
             if (address == null)
             {
-                return NotFound();
+                return NotFound("Endereço não encontrado");
             }
             return View(address);
         }
@@ -93,7 +93,7 @@ namespace Lends.Controllers
         {
             if (id != address.Id)
             {
-                return NotFound();
+                return NotFound("Endereço não encontrado");
             }
 
             if (ModelState.IsValid)
@@ -107,7 +107,7 @@ namespace Lends.Controllers
                 {
                     if (!AddressExists(address.Id))
                     {
-                        return NotFound();
+                        return NotFound("Endereço não encontrado");
                     }
                     else
                     {
@@ -124,14 +124,14 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Endereço não encontrado");
             }
 
             var address = await _context.Address
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (address == null)
             {
-                return NotFound();
+                return NotFound("Endereço não encontrado");
             }
             return View(address);
         }

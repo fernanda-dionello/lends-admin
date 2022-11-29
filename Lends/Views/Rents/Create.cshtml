@@ -19,8 +19,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-
                     <link rel="stylesheet" href="~/css/select2.css" />
+                    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
                     <label asp-for="Rent.ClientId" class="control-label"></label>
                     <select asp-for="Rent.ClientId" data-live-search="true" data-live-search-style="startsWith" 
                         class="form-control" id="simpleSelect2" 
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Rent.Price" class="control-label"></label>
-                    <input asp-for="Rent.Price" class="form-control" type="text" />
+                    <input asp-for="Rent.Price" class="form-control" type="text" placeholder="R$" />
                     <span asp-validation-for="Rent.Price" class="text-danger"></span>
                 </div>
                 <div class="form-group">

@@ -224,8 +224,15 @@ body {
     flex-direction: row;
 }
 
+.delete-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}
+
 .games-buttons > p {
-    margin: unset !important;
+    margin: 0 !important;
 }
 
 .form-rents > p {
@@ -266,4 +273,14 @@ body {
 .addresses:hover, .rents:hover {
     background: #ffce67;
     border-color: #ffce67;
+}
+
+.alert-size {
+    padding: 0.2rem 1.25rem !important;
+    margin-top: 1rem;
+}
+
+.close-button {
+    padding: 0.2rem 0.2rem !important;
+    font-size: 20px;
 }

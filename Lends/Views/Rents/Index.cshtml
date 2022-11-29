@@ -57,12 +57,12 @@
                     @Html.DisplayFor(modelItem => item.ReturnDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    R$ @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
                     @if (@item.IsActive)
                     {
-                            <a asp-action="ReturnBook" asp-route-id="@item.Id" class="btn btn-outline-primary button-size">Devolução</a>
+                        <a asp-action="ReturnGame" asp-route-id="@item.Id" class="btn btn-outline-primary button-size">Devolução</a>
                     }
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-warning button-size">Detalhes</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger button-size">Deletar</a>

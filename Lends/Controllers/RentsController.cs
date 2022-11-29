@@ -44,7 +44,7 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Aluguel não encontrado");
             }
 
             var rent = await _context.Rent
@@ -53,7 +53,7 @@ namespace Lends.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (rent == null)
             {
-                return NotFound();
+                return NotFound("Aluguel não encontrado");
             }
 
             return View(rent);
@@ -104,8 +104,8 @@ namespace Lends.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Rents/ReturnBook/5
-        public async Task<IActionResult> ReturnBook(int? id)
+        // GET: Rents/ReturnGame/5
+        public async Task<IActionResult> ReturnGame(int? id)
         {
             if (id == null)
             {
@@ -124,10 +124,10 @@ namespace Lends.Controllers
             return View(rent);
         }
 
-        // POST: Rents/ReturnBook/5
-        [HttpPost, ActionName("ReturnBook")]
+        // POST: Rents/ReturnGame/5
+        [HttpPost, ActionName("ReturnGame")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ReturnBookConfirmed(int id)
+        public async Task<IActionResult> ReturnGameConfirmed(int id)
         {
             var rent = await _context.Rent.FindAsync(id);
             try
@@ -172,7 +172,7 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Aluguel não encontrado");
             }
 
             var rent = await _context.Rent
@@ -181,7 +181,7 @@ namespace Lends.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (rent == null)
             {
-                return NotFound();
+                return NotFound("Aluguel não encontrado");
             }
 
             return View(rent);
@@ -193,9 +193,18 @@ namespace Lends.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var rent = await _context.Rent.FindAsync(id);
-            _context.Rent.Remove(rent);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            try
+            {
+                _context.Rent.Remove(rent);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                ModelState.AddModelError("Error", "Operação não permitida");
+                return View(rent);
+            }
         }
 
         private bool RentExists(int id)

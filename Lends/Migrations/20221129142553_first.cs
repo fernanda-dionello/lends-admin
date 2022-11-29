@@ -15,7 +15,7 @@ namespace Lends.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ZipCode = table.Column<string>(nullable: true),
                     Number = table.Column<int>(nullable: false),
-                    AdditionalInformation = table.Column<string>(nullable: false)
+                    AdditionalInformation = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,7 +73,7 @@ namespace Lends.Migrations
                     MaxPlayers = table.Column<int>(nullable: false),
                     Duration = table.Column<string>(nullable: true),
                     Age = table.Column<string>(nullable: true),
-                    RentPrice = table.Column<double>(nullable: false),
+                    RentPrice = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false)
                 },
@@ -85,7 +85,7 @@ namespace Lends.Migrations
                         column: x => x.ProducerId,
                         principalTable: "Producer",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -98,7 +98,8 @@ namespace Lends.Migrations
                     ClientId = table.Column<int>(nullable: false),
                     RentalDate = table.Column<DateTime>(nullable: false),
                     ReturnDate = table.Column<DateTime>(nullable: false),
-                    Price = table.Column<double>(nullable: false)
+                    Price = table.Column<string>(nullable: true),
+                    IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -108,13 +109,13 @@ namespace Lends.Migrations
                         column: x => x.ClientId,
                         principalTable: "Client",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Rent_Game_GameId",
                         column: x => x.GameId,
                         principalTable: "Game",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

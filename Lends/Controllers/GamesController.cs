@@ -40,7 +40,7 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Jogo não encontrado");
             }
 
             var game = await _context.Game
@@ -48,7 +48,7 @@ namespace Lends.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (game == null)
             {
-                return NotFound();
+                return NotFound("Jogo não encontrado");
             }
 
             return View(game);
@@ -89,14 +89,14 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Jogo não encontrado");
             }
 
             Game game = _context.Game.Include(obj => obj.Producer).FirstOrDefault(obj => obj.Id == id);
 
             if (game == null)
             {
-                return NotFound();
+                return NotFound("Jogo não encontrado");
             }
 
             var viewModel = new GameFormViewModel();
@@ -116,7 +116,7 @@ namespace Lends.Controllers
         {
             if (id != game.Id)
             {
-                return NotFound();
+                return NotFound("Jogo não encontrado");
             }
 
             if (ModelState.IsValid)
@@ -130,7 +130,7 @@ namespace Lends.Controllers
                 {
                     if (!GameExists(game.Id))
                     {
-                        return NotFound();
+                        return NotFound("Jogo não encontrado");
                     }
                     else
                     {
@@ -148,7 +148,7 @@ namespace Lends.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound("Jogo não encontrado");
             }
 
             var game = await _context.Game
@@ -156,7 +156,7 @@ namespace Lends.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (game == null)
             {
-                return NotFound();
+                return NotFound("Jogo não encontrado");
             }
 
             return View(game);
@@ -168,9 +168,18 @@ namespace Lends.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var game = await _context.Game.FindAsync(id);
-            _context.Game.Remove(game);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            try
+            {
+                _context.Game.Remove(game);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                ModelState.AddModelError("Error", "Operação não permitida");
+                return View(game);
+            }
         }
 
         private bool GameExists(int id)
