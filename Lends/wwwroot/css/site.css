@@ -284,3 +284,27 @@ body {
     padding: 0.2rem 0.2rem !important;
     font-size: 20px;
 }
+
+.carousel-1 {
+    background: #e45750;
+    border-radius: 20px;
+
+}
+
+.carousel-2 {
+    background: #464f58;
+    border-radius: 20px;
+
+}
+
+.carousel-3 {
+    background: #e4a624;
+    border-radius: 20px;
+
+}
+
+.h1-home {
+    text-align: center;
+    color: #e45750;
+    margin: 25px 0px;
+}
