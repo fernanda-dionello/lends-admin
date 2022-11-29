@@ -6,53 +6,52 @@
     ViewData["Title"] = "Criar";
 }
 
-<h1>Criar</h1>
+<div class="jumbotron jumbotron-form">
+    <h1 class="h1-subcategories">Criar Aluguel</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Rent.GameId" class="control-label"></label>
+                    <select asp-for="Rent.GameId" class="form-control"
+                        asp-items="@(new SelectList(Model.Games.Where(g => g.Status == GameStatus.AVAILABLE), "Id", "Name"))">
+                    </select>
+                </div>
+                <div class="form-group">
 
-<h4>Aluguel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Rent.GameId" class="control-label"></label>
-                <select asp-for="Rent.GameId" class="form-control"
-                    asp-items="@(new SelectList(Model.Games.Where(g => g.Status == GameStatus.AVAILABLE), "Id", "Name"))">
-                </select>
-            </div>
-            <div class="form-group">
-
-                <link rel="stylesheet" href="~/css/select2.css" />
-                <label asp-for="Rent.ClientId" class="control-label"></label>
-                <select asp-for="Rent.ClientId" data-live-search="true" data-live-search-style="startsWith" 
-                    class="form-control" id="simpleSelect2" 
-                    asp-items="@(new SelectList(Model.Clients, "Id", "Name"))">
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rent.RentalDate" class="control-label"></label>
-                <input asp-for="Rent.RentalDate" class="form-control" />
-                <span asp-validation-for="Rent.RentalDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rent.ReturnDate" class="control-label"></label>
-                <input asp-for="Rent.ReturnDate" class="form-control" />
-                <span asp-validation-for="Rent.ReturnDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rent.Price" class="control-label"></label>
-                <input asp-for="Rent.Price" class="form-control" type="text" />
-                <span asp-validation-for="Rent.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                    <link rel="stylesheet" href="~/css/select2.css" />
+                    <label asp-for="Rent.ClientId" class="control-label"></label>
+                    <select asp-for="Rent.ClientId" data-live-search="true" data-live-search-style="startsWith" 
+                        class="form-control" id="simpleSelect2" 
+                        asp-items="@(new SelectList(Model.Clients, "Id", "Name"))">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rent.RentalDate" class="control-label"></label>
+                    <input asp-for="Rent.RentalDate" class="form-control" />
+                    <span asp-validation-for="Rent.RentalDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rent.ReturnDate" class="control-label"></label>
+                    <input asp-for="Rent.ReturnDate" class="form-control" />
+                    <span asp-validation-for="Rent.ReturnDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rent.Price" class="control-label"></label>
+                    <input asp-for="Rent.Price" class="form-control" type="text" />
+                    <span asp-validation-for="Rent.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Criar" class="btn btn-primary btn-create" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <a asp-action="Index" class="btn btn-link">Retornar</a>
+    </div>
 </div>
 
 @section Scripts {

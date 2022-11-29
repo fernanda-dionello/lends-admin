@@ -4,67 +4,70 @@
     ViewData["Title"] = "Alugueis";
 }
 
-<h1>Aluguéis</h1>
+<div class="jumbotron">
 
-<p>
-    <a asp-action="Create">Novo Aluguel</a>
-</p>
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            <input name="rentSearch" type="submit" value="Listar inativos" class="btn btn-danger" /> 
-            <input asp-action="Index" type="submit" value="Listar ativos" class="btn btn-primary" /> 
-        </p>
-    </div>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Game)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Client)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RentalDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReturnDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Game.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Client.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RentalDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReturnDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @if (@item.IsActive)
-                {
-                 <a asp-action="ReturnBook" asp-route-id="@item.Id">Devolução</a> 
-                }
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <h1 class="h1-subcategories">Aluguéis</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary add-producer">Adicionar Aluguel</a>
+    </p>
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                <input name="rentSearch" type="submit" value="Listar inativos" class="btn btn-danger" /> 
+                <input asp-action="Index" type="submit" value="Listar ativos" class="btn btn-primary" /> 
+            </p>
+        </div>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Game)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Client)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.RentalDate)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.ReturnDate)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @if (@item.IsActive)
+                    {
+                            <a asp-action="ReturnBook" asp-route-id="@item.Id" class="btn btn-outline-primary button-size">Devolução</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-warning button-size">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger button-size">Deletar</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

@@ -4,47 +4,57 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Devolução</h1>
+<div class="jumbotron jumbotron-form">
 
-<h3>Você tem certeza que quer devolver este jogo?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Game)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Game.Name)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Client)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Client.Name)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RentalDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RentalDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReturnDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReturnDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+    <h1 class="h1-subcategories">Devolver Aluguel</h1>
+
+    <h4 class="delete-text">Você tem certeza que quer devolver esse aluguel?</h4>
+    <dl class="dl-style">
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Game)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Game.Name)
+            </dd>
+        </div>
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Client)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Client.Name)
+            </dd>
+        </div>
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.RentalDate)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.RentalDate)
+            </dd>
+        </div>
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.ReturnDate)
+            </dd>
+        </div>
+        <div class="details-list">
+            <dt class="dt-item col-sm-2 dt-item-key">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="dt-item col-sm-2">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+        </div>
     </dl>
     
     <form asp-action="ReturnBook">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Devolver" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Devolver" class="btn btn-outline-danger button-size" />
+        <a asp-action="Index" class="btn btn-outline-warning button-size">Retornar</a>
     </form>
 </div>
