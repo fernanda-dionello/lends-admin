@@ -195,7 +195,7 @@ body {
     text-align: center;
 }
 
-.buttons-clients {
+.buttons-clients, .rent-buttons {
     display: flex;
     flex-direction: row;
 }
@@ -228,7 +228,11 @@ body {
     margin: unset !important;
 }
 
-.form-buttons-separator, .addresses {
+.form-rents > p {
+    margin: unset !important;
+}
+
+.form-buttons-separator, .addresses, .rents {
     margin-left: 20px;
 }
 
@@ -249,12 +253,17 @@ body {
     text-align: left;
 }
 
-.addresses {
-    background: #bababa;
-    border-color: #bababa;
+.addresses, .rents-active {
+    background: #66c6a0;
+    border-color: #66c6a0;
 }
 
-.addresses:hover {
+.rents-inactive {
+    background: #696969;
+    border-color: #696969;
+}
+
+.addresses:hover, .rents:hover {
     background: #ffce67;
     border-color: #ffce67;
 }
