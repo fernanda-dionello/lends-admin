@@ -13,19 +13,24 @@ namespace Lends.Models
         public int Id { get; set; }
         
         [Display(Name = "Jogo")]
+        [Required(ErrorMessage = "Jogo é um campo obrigatório!")]
         public string Name { get; set; }
         
-        [Display(Name = "Categoria")] 
+        [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "Categoria é um campo obrigatório!")]
         public CategoryType Category { get; set; }
 
+        [Required(ErrorMessage = "Fabricante é um campo obrigatório!")]
         public int ProducerId { get; set; }
 
         [Display(Name = "Fabricante")]
         public Producer Producer { get; set; }
         
         [Display(Name = "Min Jogadores")]
+        [Range(1, 100)]
         public int MinPlayers { get; set; }
         [Display(Name = "Max Jogadores")]
+        [Range(1, 100)]
         public int MaxPlayers { get; set; }
         
         [Display(Name = "Duração")]
@@ -35,6 +40,7 @@ namespace Lends.Models
         public string Age { get; set; }
         
         [Display(Name = "Aluguel Semanal")]
+        [Required(ErrorMessage = "Aluguel Semanal é um campo obrigatório!")]
         [RegularExpression(@"^\d{0,8}(\,\d{1,2})?", ErrorMessage = "Somente valores decimais separados por vírgula serão aceitos.")]
         public string RentPrice { get; set; }
 
@@ -43,6 +49,7 @@ namespace Lends.Models
         public string Image { get; set; }
 
         [Display(Name = "Status")]
+        [Required(ErrorMessage = "Status é um campo obrigatório!")]
         public GameStatus Status { get; set; }
 
         public ICollection<Rent> Rents = new List<Rent>();

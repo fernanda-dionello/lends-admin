@@ -9,9 +9,13 @@ namespace Lends.Models
         public int Id { get; set; }
 
         [Display(Name = "CEP")]
+        [Required(ErrorMessage = "CEP é um campo obrigatório!")]
+        [RegularExpression(@"^[0-9]{5}-[0-9]{3}$", ErrorMessage = "Válido apenas 8 dígitos no formato xxxxx-xxx")]
         public string ZipCode { get; set; }
         
         [Display(Name = "Número")]
+        [Required(ErrorMessage = "Número é um campo obrigatório!")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage ="Válido apenas números")]
         public int Number { get; set; }
 
         [Display(Name = "Complemento")]
