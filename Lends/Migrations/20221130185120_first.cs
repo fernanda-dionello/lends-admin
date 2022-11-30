@@ -13,7 +13,7 @@ namespace Lends.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ZipCode = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<string>(nullable: false),
                     Number = table.Column<int>(nullable: false),
                     AdditionalInformation = table.Column<string>(nullable: true)
                 },
@@ -28,8 +28,8 @@ namespace Lends.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Cnpj = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    Cnpj = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,10 +42,10 @@ namespace Lends.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Cellphone = table.Column<string>(nullable: true),
-                    Cpf = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Cellphone = table.Column<string>(nullable: false),
+                    Cpf = table.Column<string>(nullable: false),
                     RegistrationDate = table.Column<DateTime>(nullable: false),
                     AddressId = table.Column<int>(nullable: false)
                 },
@@ -66,14 +66,14 @@ namespace Lends.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Category = table.Column<int>(nullable: false),
                     ProducerId = table.Column<int>(nullable: false),
                     MinPlayers = table.Column<int>(nullable: false),
                     MaxPlayers = table.Column<int>(nullable: false),
                     Duration = table.Column<string>(nullable: true),
                     Age = table.Column<string>(nullable: true),
-                    RentPrice = table.Column<string>(nullable: true),
+                    RentPrice = table.Column<string>(nullable: false),
                     Image = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false)
                 },
@@ -98,7 +98,7 @@ namespace Lends.Migrations
                     ClientId = table.Column<int>(nullable: false),
                     RentalDate = table.Column<DateTime>(nullable: false),
                     ReturnDate = table.Column<DateTime>(nullable: false),
-                    Price = table.Column<string>(nullable: true),
+                    Price = table.Column<string>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
